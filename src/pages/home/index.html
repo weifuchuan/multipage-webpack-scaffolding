@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   这里是主页，
   <a href="./about.html">关于我们</a>
   <div class="test">css测试</div>
+
+  <button id="go">去你的吧</button>
+
+  <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+  <button type="button" class="btn btn-primary">Primary</button>
+
+  <!-- Secondary, outline button -->
+  <button type="button" class="btn btn-secondary">Secondary</button>
+
+  <!-- Indicates a successful or positive action -->
+  <button type="button" class="btn btn-success">Success</button>
+
+  <!-- Contextual button for informational alert messages -->
+  <button type="button" class="btn btn-info">Info</button>
+
+  <!-- Indicates caution should be taken with this action -->
+  <button type="button" class="btn btn-warning">Warning</button>
+
+  <!-- Indicates a dangerous or potentially negative action -->
+  <button type="button" class="btn btn-danger">Danger</button>
+
+  <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+  <button type="button" class="btn btn-link">Link</button>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

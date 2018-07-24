@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "classic",
+    "rootDir": "src",
+    "downlevelIteration": true,
+    "alwaysStrict": true
+  },
+  "exclude": [
+    "node_modules",
+  ]
+}

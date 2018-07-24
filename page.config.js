@@ -3,16 +3,16 @@ module.exports = [
   {
     name: 'index',
     html: 'home/index.html',
-    jsEntry: 'home/index.js'
+    tsEntry: 'home/index.ts'
   },
   {
     name: 'about',
     html: 'about/about.html',
-    jsEntry: 'about/about.js'
+    tsEntry: 'about/about.ts'
   },
   {
     name: 'contact',
     html: 'contact/contact.html',
-    jsEntry: 'contact/contact.js'
+    tsEntry: 'contact/contact.ts'
   }
 ]

@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /**
  * rem 相关的工具
  * @param {*}  

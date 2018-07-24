@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const pageConfig = require('./page.config.js');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const tsImportPluginFactory = require('ts-import-plugin');
 
 class ChunksFromEntryPlugin {
   apply(compiler) {
@@ -46,15 +47,16 @@ let webpackConfig = {
     publicPath: '/',
   },
   module: {
-    rules: [{
-        test: /\.(js)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [path.join(__dirname, "./src")],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
+    rules: [
+      // {
+      //   test: /\.(js)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [path.join(__dirname, "./src")],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
       // html中的img标签
       {
         test: /\.html$/,
@@ -64,6 +66,25 @@ let webpackConfig = {
           limit: 10000,
           name: 'static/img/[name].[hash:7].[ext]'
         }
+      },
+      {
+        test: /\.ts$/,
+        use: [
+          {
+            loader: require.resolve('ts-loader'),
+            options: {
+              // disable type checker - we will use it in fork plugin
+              transpileOnly: true,
+              getCustomTransformers: () => ({
+                before: [ tsImportPluginFactory( /** options */) ]
+              }),
+              compilerOptions: {
+                module: 'es2015'
+              }
+            },
+          },
+        ],
+        include: [path.join(__dirname, "./src")]
       },
       {
         test: /\.js$/,
@@ -109,6 +130,13 @@ let webpackConfig = {
         }),
       },
     ]
+  },
+  resolve:{
+    extensions: [
+      '.ts',
+      '.js',
+      '.json'
+    ],
   },
   plugins: [
     new UglifyJsPlugin({
@@ -160,7 +188,7 @@ let webpackConfig = {
 
 if (pageConfig && Array.isArray(pageConfig)) {
   pageConfig.map(page => {
-    webpackConfig.entry[page.name] = `./src/pages/${page.jsEntry}`;
+    webpackConfig.entry[page.name] = `./src/pages/${page.tsEntry}`;
     webpackConfig.plugins.push(
       new HtmlWebpackPlugin({
         filename: path.join(__dirname, `/dist/${page.name}.html`),
